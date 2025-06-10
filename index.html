@@ -9,7 +9,6 @@
         href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;600&family=Playfair+Display:wght@500;700&family=Delius&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
 </head>
 
 <body>
@@ -56,14 +55,15 @@
         </div>
     </section>
 
-    <section class="seccion">
+    <section class="seccion" id="confirmacion-section">
         <h2 class="titulo">Confirmación de Asistencia</h2>
         <form class="formulario">
             <div class="form-contenedor">
                 <label for="codigo">Ingresa tu código de invitación:</label>
                 <input type="text" id="codigo" name="codigo" required>
                 <p class="muted">Si no tienes tu código, por favor contacta a Lucy o Mau.</p>
-                <a href="#" class="boton">Asistiré</a> <a href="#" class="boton-no">No podré asisitir</a>
+                <a href="#" id="btn-asistire" class="boton">Asistiré</a>
+                <a href="#" id="btn-no-asistire" class="boton-no">No podré asistir</a>
             </div>
         </form>        
     </section>
@@ -95,15 +95,8 @@
         <p>Gracias por acompañarnos en este día tan especial.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
-    <script>
-        lightGallery(document.getElementById('galeria'), {
-            plugins: [lgZoom],
-            speed: 500,
-            download: false
-        });
 
+    <script>        
         const contador = document.getElementById('contador');
         const fechaEvento = new Date("2026-03-14T17:00:00").getTime();
         const interval = setInterval(() => {
@@ -136,6 +129,65 @@
       `;
         }, 1000);
     </script>
+
+    <script>
+    // Fecha límite para confirmar (por ejemplo, 1 de marzo de 2026)
+    const fechaLimiteConfirmacion = new Date("2026-03-01T23:59:59").getTime();
+    const seccionConfirmacion = document.getElementById("confirmacion-section");
+
+    const ahora = new Date().getTime();
+
+    if (ahora > fechaLimiteConfirmacion) {
+        seccionConfirmacion.innerHTML = `
+            <h2 class="titulo">Confirmación de Asistencia</h2>
+            <p class="muted">El periodo para confirmar asistencia ha finalizado.</p>
+            <p>Si tienes dudas o necesitas hacer cambios, por favor contacta a Lucy o Mau directamente.</p>
+        `;
+    }
+
+    // API URL - reemplaza con tu URL de Google Apps Script
+    const urlAPI = "https://script.google.com/macros/s/AKfycbxXqvyseQ1gixOyLSlCFQLFfpDqTem6mWlyNrzT3gE_UKBd30djxniI1fYkniHRK-Ku/exec";
+
+    document.getElementById("btn-asistire").addEventListener("click", function (e) {
+        e.preventDefault();
+        enviarConfirmacion("Sí asistiré");
+    });
+
+    document.getElementById("btn-no-asistire").addEventListener("click", function (e) {
+        e.preventDefault();
+        enviarConfirmacion("No asistiré");
+    });
+
+    function enviarConfirmacion(respuesta) {
+        const codigo = document.getElementById("codigo").value.trim();
+
+        if (!codigo) {
+            alert("Por favor ingresa tu código de invitación.");
+            return;
+        }
+
+        fetch(urlAPI, {
+            method: "POST",
+            body: JSON.stringify({ codigo, respuesta }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.exito) {
+                alert(`¡Gracias, ${data.nombre}, por confirmar: ${respuesta}! 🎉`);
+            } else {
+                alert("Código no válido. Por favor contacta a Lucy o Mau.");
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Ocurrió un error al enviar la confirmación. Intenta de nuevo más tarde.");
+        });
+    }
+</script>
+
 </body>
 
 </html>
