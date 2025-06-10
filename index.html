@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucy & Mau - Nuestra Boda</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;600&family=Playfair+Display:wght@500;700&family=Delius&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+</head>
+
+<body>
+    <header>
+        <img src="images/header.png" alt="Lucy & Mau" class="header-logo">
+    </header>
+
+    <section class="contador-section">        
+        <div class="contador" id="contador"></div>
+    </section>
+
+    <section class="seccion">
+        <p class="invitacion">
+            Lo pensamos, lo meditamos… y luego dijimos: “sí lo vamos a hacer hay que hacerlo ya”.
+            <br/><br/>
+            Así que, queremos que celebres con nosotros este gran paso.</p>
+    </section>
+
+    <section class="seccion">
+        <h2 class="titulo">¿Dónde y cuándo?</h2>
+        <div class="foto-venue-container">
+            <img src="images/venue.jpg" alt="Foto del venue" class="foto-venue">
+        </div>
+        <p class="acentos">14 Marzo 2026 | 17:00 hrs.</p>
+        <p class="lugares">Verde Olista Terraza y Jardín</p>
+        <p>Carr. Agostaderito Km 9.3, Salto de los Salado, Ags</p>
+        <p><a href="https://maps.app.goo.gl/gMAG2Rv9W2pPDNFu7" target="_blank" class="boton">Ver en Google Maps</a></p>
+    </section>
+
+    <section class="seccion">
+        <h2 class="titulo">Código de Vestimenta</h2>
+        <div class="dresscode-contenido">
+            <div class="dresscode-icono">
+                <!-- Puedes incrustar tu SVG directamente o usar una imagen -->
+                <img src="images/dresscode.png" alt="Dress code icono">
+            </div>
+            <div class="dresscode-texto">
+                <p class="lugares">Celebra con nosotros con un look formal y con estilo.</p>                
+                <p>¡Queremos que luzcas increíble en cada foto!</p>
+                <p></p>
+                <p class="muted">Te pedimos evitar tonos <strong>blanco</strong>, <strong>beige</strong> y
+                        <strong>rojo</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <h2 class="titulo">Confirmación de Asistencia</h2>
+        <form class="formulario">
+            <div class="form-contenedor">
+                <label for="codigo">Ingresa tu código de invitación:</label>
+                <input type="text" id="codigo" name="codigo" required>
+                <p class="muted">Si no tienes tu código, por favor contacta a Lucy o Mau.</p>
+                <a href="#" class="boton">Asistiré</a> <a href="#" class="boton-no">No podré asisitir</a>
+            </div>
+        </form>        
+    </section>
+
+    <section class="seccion">
+        <h2 class="titulo">Mesa de Regalos</h2>
+        <p>Tu presencia es el mejor regalo, pero si deseas obsequiarnos algo, no nos quejamos:</p>
+        <img src="images/liverpool.png" class="tienda" alt="Mesa de regalos" class="mesa-regalos">
+        <p class="acentos">No. Evento: 33120</p>
+        <p><a href="#" class="boton" style="margin-top: -2rem;">Ver mesa de regalos</a></p>
+    </section>
+
+    <section class="seccion">
+        <h2 class="titulo">Album Compartido</h2>
+        <div class="dresscode-contenido">
+            <div class="dresscode-icono">
+                <!-- Puedes incrustar tu SVG directamente o usar una imagen -->
+                <img src="images/album.png" width="300" alt="Album icono">
+            </div>
+            <div class="dresscode-texto">
+                <p>Comparte tus fotos y videos del gran día y descubre los momentos capturados por nuestros seres queridos.</p>                
+                <p class="muted">También podrás acceder desde el código QR que encontrarás ese día.</p>
+            </div>
+        </div>
+        <p><a href="https://photos.app.goo.gl/lMZgEXN3oPd7Xtzu9" target="_blank" class="boton">Ver álbum compartido</a></p>
+    </section>
+
+    <footer>
+        <p>Gracias por acompañarnos en este día tan especial.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+    <script>
+        lightGallery(document.getElementById('galeria'), {
+            plugins: [lgZoom],
+            speed: 500,
+            download: false
+        });
+
+        const contador = document.getElementById('contador');
+        const fechaEvento = new Date("2026-03-14T17:00:00").getTime();
+        const interval = setInterval(() => {
+            const ahora = new Date().getTime();
+            let diferencia = fechaEvento - ahora;
+
+            if (diferencia <= 0) {
+                contador.innerHTML = "¡Hoy es el gran día!";
+                clearInterval(interval);
+                return;
+            }
+
+            const segundosTotales = Math.floor(diferencia / 1000);
+            const minutosTotales = Math.floor(segundosTotales / 60);
+            const horasTotales = Math.floor(minutosTotales / 60);
+            const diasTotales = Math.floor(horasTotales / 24);
+
+            const meses = Math.floor(diasTotales / 30);
+            const dias = diasTotales % 30;
+            const horas = horasTotales % 24;
+            const minutos = minutosTotales % 60;
+            const segundos = segundosTotales % 60;
+
+            contador.innerHTML = `
+        <div class="unidad"><strong>${meses}</strong><span>meses</span></div>
+        <div class="unidad"><strong>${dias}</strong><span>días</span></div>
+        <div class="unidad"><strong>${horas}</strong><span>horas</span></div>
+        <div class="unidad"><strong>${minutos}</strong><span>minutos</span></div>
+        <div class="unidad"><strong>${segundos}</strong><span>segundos</span></div>
+      `;
+        }, 1000);
+    </script>
+</body>
+
+</html>
