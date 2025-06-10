@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmación de Asistencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <section class="seccion">
+        <div class="invitacion" id="mensaje"></div>
+    </section>
+
+    <section class="seccion">
+        <p class="muted" style="margin-top: 2rem;">Este mensaje se abrió en una nueva página. Puedes cerrarla cuando
+            gustes.</p>
+    </section>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const valido = params.get("valido") === "true";
+        const nombre = params.get("nombre");
+        const respuesta = params.get("respuesta");
+
+        const mensajeDiv = document.getElementById("mensaje");
+
+        if (!valido) {
+            mensajeDiv.innerHTML = `
+        <p>El código de invitación no es válido.</p>
+        <p>Por favor, asegúrate de haberlo escrito correctamente.</p>
+        <p>Si el problema persiste, contacta a <strong>Lucy</strong> o <strong>Mau</strong>.</p>
+      `;
+        } else {
+            let mensajeRespuesta = "";
+            if (respuesta === "Sí asistiré") {
+                mensajeRespuesta = `¡Nos alegra muchísimo saber que contaremos contigo ese día! Prepárate para celebrar en grande 🎉`;
+            } else if (respuesta === "No asistiré") {
+                mensajeRespuesta = `Lamentamos que no puedas acompañarnos, pero entendemos. Tomaremos unas copas en tu nombre 🍷`;
+            } else {
+                mensajeRespuesta = `Gracias por confirmar tu respuesta.`;
+            }
+
+            mensajeDiv.innerHTML = `
+        <p><strong>${nombre}</strong>, gracias por responder a nuestra invitación.</p>
+        <p>${mensajeRespuesta}</p>
+      `;
+        }
+    </script>
+</body>
+
+</html>
