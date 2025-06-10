@@ -2,35 +2,36 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucy & Mau - Nuestra Boda</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;600&family=Playfair+Display:wght@500;700&family=Delius&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="estilos.css">
+        rel="stylesheet" />
+    <link rel="stylesheet" href="estilos.css" />
 </head>
 
 <body>
     <header>
-        <img src="images/header.png" alt="Lucy & Mau" class="header-logo">
+        <img src="images/header.png" alt="Lucy & Mau" class="header-logo" />
     </header>
 
-    <section class="contador-section">        
+    <section class="contador-section">
         <div class="contador" id="contador"></div>
     </section>
 
     <section class="seccion">
         <p class="invitacion">
             Lo pensamos, lo meditamos… y luego dijimos: “sí lo vamos a hacer hay que hacerlo ya”.
-            <br/><br/>
-            Así que, queremos que celebres con nosotros este gran paso.</p>
+            <br /><br />
+            Así que, queremos que celebres con nosotros este gran paso.
+        </p>
     </section>
 
     <section class="seccion">
         <h2 class="titulo">¿Dónde y cuándo?</h2>
         <div class="foto-venue-container">
-            <img src="images/venue.jpg" alt="Foto del venue" class="foto-venue">
+            <img src="images/venue.jpg" alt="Foto del venue" class="foto-venue" />
         </div>
         <p class="acentos">14 Marzo 2026 | 17:00 hrs.</p>
         <p class="lugares">Verde Olista Terraza y Jardín</p>
@@ -42,36 +43,38 @@
         <h2 class="titulo">Código de Vestimenta</h2>
         <div class="dresscode-contenido">
             <div class="dresscode-icono">
-                <!-- Puedes incrustar tu SVG directamente o usar una imagen -->
-                <img src="images/dresscode.png" alt="Dress code icono">
+                <img src="images/dresscode.png" alt="Dress code icono" />
             </div>
             <div class="dresscode-texto">
-                <p class="lugares">Celebra con nosotros con un look formal y con estilo.</p>                
+                <p class="lugares">Celebra con nosotros con un look formal y con estilo.</p>
                 <p>¡Queremos que luzcas increíble en cada foto!</p>
                 <p></p>
                 <p class="muted">Te pedimos evitar tonos <strong>blanco</strong>, <strong>beige</strong> y
-                        <strong>rojo</strong>.</p>
+                    <strong>rojo</strong>.</p>
             </div>
         </div>
     </section>
 
     <section class="seccion" id="confirmacion-section">
         <h2 class="titulo">Confirmación de Asistencia</h2>
-        <form class="formulario">
+        <form id="confirmacionForm"
+            action="https://script.google.com/macros/s/AKfycbxXqvyseQ1gixOyLSlCFQLFfpDqTem6mWlyNrzT3gE_UKBd30djxniI1fYkniHRK-Ku/exec"
+            method="POST" target="_blank">
             <div class="form-contenedor">
                 <label for="codigo">Ingresa tu código de invitación:</label>
-                <input type="text" id="codigo" name="codigo" required>
+                <input type="text" id="codigo" name="codigo" required />
                 <p class="muted">Si no tienes tu código, por favor contacta a Lucy o Mau.</p>
-                <a href="#" id="btn-asistire" class="boton">Asistiré</a>
-                <a href="#" id="btn-no-asistire" class="boton-no">No podré asistir</a>
+                <button type="submit" name="respuesta" value="Sí asistiré" id="btn-asistire" class="boton">Asistiré</button>
+                <button type="submit" name="respuesta" value="No asistiré" id="btn-no-asistire" class="boton-no">No podré
+                    asistir</button>
             </div>
-        </form>        
+        </form>
     </section>
 
     <section class="seccion">
         <h2 class="titulo">Mesa de Regalos</h2>
         <p>Tu presencia es el mejor regalo, pero si deseas obsequiarnos algo, no nos quejamos:</p>
-        <img src="images/liverpool.png" class="tienda" alt="Mesa de regalos" class="mesa-regalos">
+        <img src="images/liverpool.png" class="tienda" alt="Mesa de regalos" />
         <p class="acentos">No. Evento: 33120</p>
         <p><a href="#" class="boton" style="margin-top: -2rem;">Ver mesa de regalos</a></p>
     </section>
@@ -80,11 +83,11 @@
         <h2 class="titulo">Album Compartido</h2>
         <div class="dresscode-contenido">
             <div class="dresscode-icono">
-                <!-- Puedes incrustar tu SVG directamente o usar una imagen -->
-                <img src="images/album.png" width="300" alt="Album icono">
+                <img src="images/album.png" width="300" alt="Album icono" />
             </div>
             <div class="dresscode-texto">
-                <p>Comparte tus fotos y videos del gran día y descubre los momentos capturados por nuestros seres queridos.</p>                
+                <p>Comparte tus fotos y videos del gran día y descubre los momentos capturados por nuestros seres
+                    queridos.</p>
                 <p class="muted">También podrás acceder desde el código QR que encontrarás ese día.</p>
             </div>
         </div>
@@ -95,9 +98,9 @@
         <p>Gracias por acompañarnos en este día tan especial.</p>
     </footer>
 
-
-    <script>        
-        const contador = document.getElementById('contador');
+    <script>
+        // Contador regresivo
+        const contador = document.getElementById("contador");
         const fechaEvento = new Date("2026-03-14T17:00:00").getTime();
         const interval = setInterval(() => {
             const ahora = new Date().getTime();
@@ -121,73 +124,48 @@
             const segundos = segundosTotales % 60;
 
             contador.innerHTML = `
-        <div class="unidad"><strong>${meses}</strong><span>meses</span></div>
-        <div class="unidad"><strong>${dias}</strong><span>días</span></div>
-        <div class="unidad"><strong>${horas}</strong><span>horas</span></div>
-        <div class="unidad"><strong>${minutos}</strong><span>minutos</span></div>
-        <div class="unidad"><strong>${segundos}</strong><span>segundos</span></div>
-      `;
+                <div class="unidad"><strong>${meses}</strong><span>meses</span></div>
+                <div class="unidad"><strong>${dias}</strong><span>días</span></div>
+                <div class="unidad"><strong>${horas}</strong><span>horas</span></div>
+                <div class="unidad"><strong>${minutos}</strong><span>minutos</span></div>
+                <div class="unidad"><strong>${segundos}</strong><span>segundos</span></div>
+            `;
         }, 1000);
-    </script>
 
-    <script>
-    // Fecha límite para confirmar (por ejemplo, 1 de marzo de 2026)
-    const fechaLimiteConfirmacion = new Date("2026-03-01T23:59:59").getTime();
-    const seccionConfirmacion = document.getElementById("confirmacion-section");
+        // Fecha límite para confirmar
+        const fechaLimiteConfirmacion = new Date("2026-03-01T23:59:59").getTime();
+        const seccionConfirmacion = document.getElementById("confirmacion-section");
 
-    const ahora = new Date().getTime();
+        const ahora = new Date().getTime();
 
-    if (ahora > fechaLimiteConfirmacion) {
-        seccionConfirmacion.innerHTML = `
-            <h2 class="titulo">Confirmación de Asistencia</h2>
-            <p class="muted">El periodo para confirmar asistencia ha finalizado.</p>
-            <p>Si tienes dudas o necesitas hacer cambios, por favor contacta a Lucy o Mau directamente.</p>
-        `;
-    }
-
-    // API URL - reemplaza con tu URL de Google Apps Script
-    const urlAPI = "https://script.google.com/macros/s/AKfycbxXqvyseQ1gixOyLSlCFQLFfpDqTem6mWlyNrzT3gE_UKBd30djxniI1fYkniHRK-Ku/exec";
-
-    document.getElementById("btn-asistire").addEventListener("click", function (e) {
-        e.preventDefault();
-        enviarConfirmacion("Sí asistiré");
-    });
-
-    document.getElementById("btn-no-asistire").addEventListener("click", function (e) {
-        e.preventDefault();
-        enviarConfirmacion("No asistiré");
-    });
-
-    function enviarConfirmacion(respuesta) {
-        const codigo = document.getElementById("codigo").value.trim();
-
-        if (!codigo) {
-            alert("Por favor ingresa tu código de invitación.");
-            return;
+        if (ahora > fechaLimiteConfirmacion) {
+            seccionConfirmacion.innerHTML = `
+                <h2 class="titulo">Confirmación de Asistencia</h2>
+                <p class="muted">El periodo para confirmar asistencia ha finalizado.</p>
+                <p>Si tienes dudas o necesitas hacer cambios, por favor contacta a Lucy o Mau directamente.</p>
+            `;
         }
 
-        fetch(urlAPI, {
-            method: "POST",
-            body: JSON.stringify({ codigo, respuesta }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.exito) {
-                alert(`¡Gracias, ${data.nombre}, por confirmar: ${respuesta}! 🎉`);
-            } else {
+        // Mostrar mensaje tras redirección
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const valido = urlParams.get("valido");
+            const nombre = urlParams.get("nombre");
+            const respuesta = urlParams.get("respuesta");
+
+            if (valido === "true") {
+                alert(`¡Gracias, ${nombre}, por confirmar: ${respuesta}! 🎉`);
+            } else if (valido === "false") {
                 alert("Código no válido. Por favor contacta a Lucy o Mau.");
             }
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Ocurrió un error al enviar la confirmación. Intenta de nuevo más tarde.");
-        });
-    }
-</script>
 
+            if (valido !== null) {
+                // Elimina los parámetros de la URL para evitar mensajes repetidos al recargar
+                history.replaceState(null, "", window.location.pathname);
+                document.getElementById("confirmacionForm").reset();
+            }
+        };
+    </script>
 </body>
 
 </html>
