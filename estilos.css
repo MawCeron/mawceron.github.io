@@ -40,7 +40,7 @@ header::before {
 }
 
 .header-logo {
-  max-height: 30%;
+  max-height: 50%;
   max-width: 50%;
   z-index: 2;
   object-fit: contain;
@@ -54,8 +54,8 @@ header::before {
   }
 
   .header-logo {
-    max-width: 70%;
-    max-height: 70%;
+    max-width: 50%;
+    max-height: 50%;
   }
 }
 
