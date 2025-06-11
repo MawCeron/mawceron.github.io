@@ -40,7 +40,7 @@ header::before {
 }
 
 .header-logo {
-  max-height: 50%;
+  max-height: 30%;
   max-width: 50%;
   z-index: 2;
 }
@@ -177,7 +177,6 @@ footer {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: var(--color3);
   color: white;
   font-weight: bold;
   text-decoration: none;
@@ -188,27 +187,20 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-.boton-no {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
+.boton-si {
+  background-color: var(--color3); /* Botón base: asistiré */
+}
+
+button.boton.boton-no {
   background-color: var(--color6);
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: 'Outfit', sans-serif;
-  transition: background-color 0.3s ease;
 }
 
 .boton:hover {
-  background-color: #e29b84; /* un tono más oscuro */
+  background-color: #e29b84; /* Hover para asistiré */
 }
 
-.boton-no:hover {
-  background-color: #bba799;; /* un tono más oscuro */
+button.boton.boton-no:hover {
+  background-color: #a89688;
 }
 
 .dresscode-contenido {
