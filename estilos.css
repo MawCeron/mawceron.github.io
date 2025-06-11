@@ -43,6 +43,20 @@ header::before {
   max-height: 30%;
   max-width: 50%;
   z-index: 2;
+  object-fit: contain;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+  header {
+    height: 40vh; /* Alternativa a aspect-ratio en móviles */
+    aspect-ratio: auto; /* Desactiva la relación en móviles */
+  }
+
+  .header-logo {
+    max-width: 70%;
+    max-height: 70%;
+  }
 }
 
 .seccion {
