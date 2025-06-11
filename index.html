@@ -58,7 +58,7 @@
 
     <section class="seccion" id="confirmacion-section">
         <h2 class="titulo">Confirmación de Asistencia</h2>
-        <form id="confirmacionForm"
+        <form id="confirmacionForm" class="formulario"
             action="https://script.google.com/macros/s/AKfycbxXqvyseQ1gixOyLSlCFQLFfpDqTem6mWlyNrzT3gE_UKBd30djxniI1fYkniHRK-Ku/exec"
             method="POST" target="_blank">
             <div class="form-contenedor">
@@ -170,6 +170,33 @@
             }
         };
     </script>
+
+    <audio id="musicaFondo" src="musica.mp3" autoplay loop></audio>
+<button class="boton-musica" id="botonMusica" aria-label="Controlar música">
+  <img src="images/volume.png" alt="Activar o silenciar música" id="iconoMusica">
+</button>
+
+<script>
+  const audio = document.getElementById('musicaFondo');
+  const boton = document.getElementById('botonMusica');
+  const icono = document.getElementById('iconoMusica');
+
+  let silenciado = false;
+
+  boton.addEventListener('click', () => {
+    silenciado = !silenciado;
+    audio.muted = silenciado;
+    icono.src = silenciado ? 'images/mute.png' : 'images/volume.png';
+  });
+
+  // Autoplay al primer clic en la página
+  window.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(() => {});
+    }
+  }, { once: true });
+</script>
+
 </body>
 
 </html>
