@@ -50,5 +50,23 @@ const PROJECTS = {
       warn: true,
       repo: GITHUB + "/Wassup",
     },
+    {
+      name: "csRenamer",
+      blurb: "A Windows desktop app for batch renaming files, with a live preview of every change before it is applied. A C# / .NET 8 clone of pyRenamer.",
+      meta: "C# · .NET 8 · MIT",
+      repo: GITHUB + "/csRenamer",
+    },
+    {
+      name: "generic-circus-game",
+      blurb: "A reimplementation of Circus Charlie (Famicom/NES, 1986) in Go, rebuilt from the original's measured behavior. Not an emulator. Playable while it is in progress.",
+      meta: "Go · in progress",
+      repo: GITHUB + "/generic-circus-game",
+    },
+    {
+      name: "dnrf",
+      blurb: "Definitely Not Road Fighter: a top-down driving game in the spirit of Road Fighter, built in Go with Ebitengine.",
+      meta: "Go · early development",
+      repo: GITHUB + "/dnrf",
+    },
   ],
 };
