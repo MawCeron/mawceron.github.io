@@ -1,0 +1,131 @@
+/* Self-contained stylesheet: this page does not share CSS with the others.
+   It replicates justwrite's own interface: one monospace column of at most 82 characters,
+   centred on a flat screen, with a single status line at the foot. Palette follows Carbonfox. */
+:root {
+  --bg: #202020;
+  --bar: #282828;
+  --fg: #dcdcdc;
+  --muted: #6f7074;
+  --accent: #33b1ff;
+  --badge: #78a9ff;
+  --on-badge: #282828;
+  --help-bg: #484848;
+  --help-fg: #52bdff;
+  --file: #484848;
+  --on-accent: #161616;
+  --panel: #2a2a2a;
+  --row: #3a3a3a;
+  --mark: #2f3a4d;
+  --mono: "JetBrains Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+}
+
+/* themes, switched from the Themes section (same three as the app) */
+html[data-theme="paper"] {
+  --bg: #f7f2ea; --bar: #e3dfd2; --fg: #2b2b28; --muted: #8a867d;
+  --accent: #3b5b73; --badge: #2f495c; --on-badge: #ffffff; --on-accent: #f7f2ea;
+  --help-bg: #d8d0be; --help-fg: #497085; --file: #79756c;
+  --panel: #ede8de; --row: #ddd7c8; --mark: #d9d3c0;
+}
+html[data-theme="mono"] {
+  --bg: #101010; --bar: #000000; --fg: #bdbdbd; --muted: #6a6a6a;
+  --accent: #e4e4e5; --badge: #555555; --on-badge: #000000; --on-accent: #101010;
+  --help-bg: #000000; --help-fg: #555555; --file: #555555;
+  --panel: #1a1a1a; --row: #2c2c2c; --mark: #2c2c2c;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.55;
+  padding-bottom: 48px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+::selection { background: var(--mark); }
+h1, h2, h3, p, pre { margin: 0; font-size: inherit; font-weight: inherit; }
+
+/* the page: never wider than 82 columns */
+.page { width: min(82ch, 100%); margin: 0 auto; padding: 72px 24px 96px; }
+.page > * + * { margin-top: 1.55em; }
+
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 2ch; color: var(--muted); }
+.top a { color: var(--muted); }
+.top a:hover { color: var(--accent); }
+.top nav { display: flex; flex-wrap: wrap; gap: 0 2ch; }
+
+h1 { font-size: 26px; line-height: 1.25; font-weight: 700; color: var(--accent); }
+h2 { font-weight: 700; color: var(--accent); margin-top: 4em !important; }
+h3 { font-weight: 700; color: var(--fg); }
+.muted { color: var(--muted); }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+.cmd { white-space: pre; display: flex; align-items: flex-start; justify-content: space-between; gap: 2ch; background: var(--bar); padding: 0.7em 1.2ch; }
+.cmd-text { flex: 1; min-width: 0; overflow-x: auto; white-space: pre; }
+.copy { flex: none; font: inherit; font-size: 13px; line-height: inherit; padding: 0; border: 0; background: none; color: var(--accent); cursor: pointer; }
+.copy:hover { text-decoration: underline; }
+figure { margin: 0; }
+figcaption { margin-top: 0.6em; color: var(--muted); }
+
+/* aligned lists */
+.rows { display: grid; grid-template-columns: 24ch 1fr; gap: 0.5em 2ch; margin-top: 1.55em; }
+.rows > span:nth-child(odd) { color: var(--fg); }
+.rows > span:nth-child(even) { color: var(--muted); }
+.rows b { font-weight: 400; color: var(--accent); }
+
+.themes { display: flex; flex-wrap: wrap; gap: 0.6em 1.5ch; }
+.themes button {
+  font: inherit; cursor: pointer; padding: 0.15em 1.2ch; border: 0;
+  background: var(--bar); color: var(--fg);
+}
+.themes button[aria-pressed="true"] { background: var(--badge); color: var(--on-badge); }
+
+/* the app's overlay panels: a titled frame over a slightly lighter ground */
+.panel { background: var(--panel); padding: 8px; }
+.frame { position: relative; border: 2px solid var(--accent); border-radius: 4px; padding: 30px 20px 24px; }
+.frame .t, .frame .hint { position: absolute; background: var(--panel); padding: 0 8px; line-height: 1.2; }
+.frame .t { top: -0.7em; left: 12px; color: var(--accent); font-weight: 700; }
+.frame .hint { bottom: -0.7em; right: 12px; color: var(--muted); }
+.help { columns: 2 24ch; column-gap: 3ch; }
+.help div { break-inside: avoid; margin-bottom: 0.2em; }
+.help span { display: block; color: var(--fg); }
+.help small { display: block; font-size: inherit; color: var(--muted); }
+.files { margin: -8px; }
+.files a { display: block; padding: 0 20px; color: var(--accent); }
+.files a.f { color: var(--fg); }
+.files a:hover, .files a:focus-visible { background: var(--row); text-decoration: none; outline: 0; }
+.caret { display: inline-block; width: 0.6em; height: 1.05em; margin-left: 0.15em; vertical-align: text-bottom; background: var(--accent); animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
+
+/* real captures of the app, one per theme; only the active theme's is shown */
+.shot img { display: none; width: 100%; height: auto; border: 1px solid var(--muted); }
+html[data-theme="screen"] .shot-screen, html[data-theme="paper"] .shot-paper, html[data-theme="mono"] .shot-mono { display: block; }
+
+/* the single status line, one terminal row at the foot, as in the app */
+.statusline {
+  position: fixed; left: 0; right: 0; bottom: 0; height: 24px; padding: 0 5px;
+  display: flex; align-items: stretch; justify-content: space-between; gap: 2ch;
+  background: var(--bar); font-size: 14px; line-height: 24px;
+}
+.statusline .left { display: flex; align-items: stretch; gap: 1ch; min-width: 0; }
+.badge { padding: 0 1ch; white-space: nowrap; }
+.badge:hover { text-decoration: none; filter: brightness(1.15); }
+.badge.ver { background: var(--badge); color: var(--on-badge); font-weight: 700; }
+.badge.chip { background: var(--help-bg); color: var(--help-fg); }
+.statusline .file { color: var(--file); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  h1 { font-size: 22px; }
+  .page { padding: 40px 18px 64px; }
+  .rows { grid-template-columns: 1fr; }
+  .rows > span:nth-child(even) { margin-bottom: 0.9em; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

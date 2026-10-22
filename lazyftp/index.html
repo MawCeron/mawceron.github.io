@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lazyftp</title>
+<meta name="description" content="lazyftp is a simple, keyboard-driven TUI client for FTP, FTPS and SFTP, inspired by lazygit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lazyftp-page">
+
+<header class="site-header">
+  <a class="brand" href="./">lazy<span>ftp</span></a>
+  <nav class="site-nav">
+    <a href="#flow">how it works</a>
+    <a href="#keys">keys</a>
+    <a href="#roadmap">roadmap</a>
+    <a href="#install">install</a>
+    <a href="https://github.com/MawCeron/lazyftp">github</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap lf-hero">
+    <p class="kicker">FTP · FTPS · SFTP</p>
+    <h1>File transfers, without leaving the keyboard.</h1>
+    <p class="lede">A simple, keyboard-driven TUI client inspired by lazygit. If you live in the terminal and keep switching to a GUI just to move files, this is for you.</p>
+    <div class="row">
+      <div class="cmd">go install github.com/MawCeron/lazyftp@latest</div>
+      <a class="btn btn-primary" href="https://github.com/MawCeron/lazyftp/releases/latest">Download binary</a>
+    </div>
+  </section>
+
+  <section class="wrap demo">
+    <img src="../assets/lazyftp-demo.gif" alt="lazyftp connecting over SFTP, then uploading a local file and downloading a remote one, both panels refreshing live" width="1400" height="900">
+    <p>Connecting over SFTP, then uploading a local file and downloading a remote one.</p>
+  </section>
+
+  <section class="wrap section">
+    <h2>One client, three protocols.</h2>
+    <div class="protocols">
+      <div class="panel"><b style="color:var(--blue)">FTP</b><span>Default port 21.</span></div>
+      <div class="panel"><b style="color:var(--green)">FTPS</b><span>Default port 21. Certificates are verified; a self-signed one is refused.</span></div>
+      <div class="panel"><b style="color:var(--pink)">SFTP</b><span>Default port 22.</span></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="flow">
+    <h2>Three keystrokes to move a file.</h2>
+    <div class="flow">
+      <div style="--c:var(--blue)"><small>01</small><h3>Navigate</h3><p>Move with <b>j</b> / <b>k</b> or the arrows. <b>Enter</b> opens a directory, <b>-</b> goes up.</p></div>
+      <div style="--c:var(--magenta)"><small>02</small><h3>Mark</h3><p>Press <b>Space</b> on as many files or directories as you like for a batch transfer.</p></div>
+      <div style="--c:var(--pink)"><small>03</small><h3>Transfer</h3><p>Press <b>t</b>. In the local panel it uploads; in the remote panel it downloads.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="keys">
+    <h2>Keybindings</h2>
+    <div class="key-groups">
+      <div class="key-group" style="--c:var(--blue)">
+        <h3>Global</h3>
+        <div class="row"><span>Open the connection dialog</span><b>Ctrl+L</b></div>
+        <div class="row"><span>Switch local / remote</span><b>Tab</b></div>
+        <div class="row"><span>Upload / download marked files</span><b>U / D</b></div>
+        <div class="row"><span>Disconnect</span><b>Ctrl+X</b></div>
+        <div class="row"><span>Help screen</span><b>?</b></div>
+        <div class="row"><span>Quit</span><b>q / Q</b></div>
+      </div>
+      <div class="key-group" style="--c:var(--green)">
+        <h3>Panels</h3>
+        <div class="row"><span>Move down</span><b>j / ↓</b></div>
+        <div class="row"><span>Move up</span><b>k / ↑</b></div>
+        <div class="row"><span>Open directory, or show file size and time</span><b>l / Enter</b></div>
+        <div class="row"><span>Go up one level</span><b>- / Backspace</b></div>
+        <div class="row"><span>Mark / unmark</span><b>Space</b></div>
+        <div class="row"><span>Transfer</span><b>t</b></div>
+        <div class="row"><span>Refresh listing</span><b>r</b></div>
+        <div class="row"><span>Cycle sort column / reverse</span><b>s / S</b></div>
+        <div class="row"><span>Rename</span><b>F2</b></div>
+        <div class="row"><span>Delete (asks first)</span><b>d</b></div>
+        <div class="row"><span>New directory</span><b>Ctrl+N</b></div>
+        <div class="row"><span>Show hidden files</span><b>Ctrl+H</b></div>
+        <div class="row"><span>Fuzzy filter</span><b>/</b></div>
+        <div class="row"><span>Jump to path</span><b>:</b></div>
+      </div>
+      <div class="key-group" style="--c:var(--pink)">
+        <h3>Connection dialog</h3>
+        <div class="row"><span>Next field</span><b>Tab</b></div>
+        <div class="row"><span>Previous field</span><b>Shift+Tab</b></div>
+        <div class="row"><span>Change protocol</span><b>← / →</b></div>
+        <div class="row"><span>Connect</span><b>Enter</b></div>
+        <div class="row"><span>Save / open favorites</span><b>Ctrl+S / Ctrl+O</b></div>
+        <div class="row"><span>Recent connections</span><b>Ctrl+R</b></div>
+        <div class="row"><span>Close or abandon</span><b>Esc</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>What you get</h2>
+    <div class="features">
+      <div><i>✓</i><span>FTP, FTPS and SFTP support</span></div>
+      <div><i>✓</i><span>Dual-pane layout, local and remote side by side</span></div>
+      <div><i>✓</i><span>Real-time transfer progress with direction indicators</span></div>
+      <div><i>✓</i><span>Multiple file selection and batch transfers</span></div>
+      <div><i>✓</i><span>Keyboard-driven navigation, vim-style and arrows</span></div>
+      <div><i>✓</i><span>Context-aware hints bar</span></div>
+      <div><i>✓</i><span>Transfer and connection log</span></div>
+      <div><i>✓</i><span>Rename, delete and create directories; hidden-file toggle</span></div>
+      <div><i>✓</i><span>Fuzzy filter, sorting and jump to path</span></div>
+      <div><i>✓</i><span>SSH keys and agent, known_hosts checking, passwords in the OS keyring</span></div>
+      <div><i>✓</i><span>Favorite and recent connections, including hosts from ~/.ssh/config</span></div>
+      <div><i>✓</i><span>Loadable color themes, with Catppuccin Mocha and Latte built in</span></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <div style="--dot:var(--green)"><b>v0.1.2</b><span>FTP connectivity and stability</span></div>
+      <div style="--dot:var(--green)"><b>v0.2.x</b><span>TUI overhaul: responsive layout, sort / filter / jump, help screen</span></div>
+      <div style="--dot:var(--green)"><b>v0.3.x</b><span>File operations: rename, delete, create directories</span></div>
+      <div style="--dot:var(--blue)"><b>v0.4.1</b><span>Latest. Favorites, history, SSH keys, themes</span></div>
+      <div style="--dot:var(--line)"><b>v0.5.0</b><span>Next. Transfer queue and permissions</span></div>
+      <div style="--dot:var(--line)"><b>v1.0.0</b><span>Stable config format and key bindings</span></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="install" style="padding-bottom:120px">
+    <h2>Install</h2>
+    <div class="lf-install">
+      <div class="panel"><p class="panel-title">Binary</p><p>.deb and .rpm packages and archives for Linux, macOS and Windows, x86-64 and arm64. No Go toolchain needed. For an archive, put <a href="https://github.com/MawCeron/lazyftp/releases/latest">lazyftp</a> on your PATH.</p></div>
+      <div class="panel"><p class="panel-title">go install</p><p class="code-line">go install github.com/MawCeron/lazyftp@latest</p></div>
+      <div class="panel"><p class="panel-title">From source</p><p class="code-line">git clone https://github.com/MawCeron/lazyftp.git<br>cd lazyftp &amp;&amp; go build -o lazyftp .</p></div>
+    </div>
+    <div class="lf-install">
+      <div class="panel flags">
+        <p class="panel-title">Flags</p>
+        <div class="row"><code>--verbose</code><span>Show the FTP control dialogue in the Log panel</span></div>
+        <div class="row"><code>--log-file &lt;path&gt;</code><span>Write the log to a file as well</span></div>
+        <div class="row"><code>--no-nerd-fonts</code><span>Plain Unicode symbols instead of Nerd Font icons</span></div>
+        <div class="row"><code>--highlight-diff</code><span>Mark files that differ between Local and Remote</span></div>
+        <div class="row"><code>-i, --identity &lt;path&gt;</code><span>SFTP private key to try first</span></div>
+        <div class="row"><code>--protocol &lt;ftp|ftps|sftp&gt;</code><span>Protocol, when the destination has no scheme</span></div>
+        <div class="row"><code>--version</code><span>Print the version and exit</span></div>
+      </div>
+      <div class="panel warn-panel">
+        <p class="panel-title">Connection failing?</p>
+        <p>Put the whole exchange in a file you can attach to an issue. Passwords are masked.</p>
+        <p class="code-line" style="margin-bottom:0">lazyftp --verbose --log-file lazyftp.log</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>MIT License · Mauricio Cerón</span>
+  <nav>
+    <a href="https://github.com/MawCeron/lazyftp">source</a>
+    <a href="https://github.com/MawCeron/lazyftp/blob/develop/CHANGELOG.md">changelog</a>
+    <a href="https://github.com/MawCeron/lazyftp/blob/develop/ROADMAP.md">roadmap</a>
+    <a href="https://github.com/MawCeron/lazyftp/blob/develop/docs/CONTRIBUTING.md">contributing</a>
+    <a href="../">all projects</a>
+  </nav>
+</footer>
+
+<script>
+// Copy buttons on the terminal commands.
+document.querySelectorAll(".cmd, .code-line").forEach(function (el) {
+  var text = el.innerText.trim();
+  var span = document.createElement("span");
+  span.className = "cmd-text";
+  while (el.firstChild) span.appendChild(el.firstChild);
+  var btn = document.createElement("button");
+  btn.type = "button"; btn.className = "copy"; btn.textContent = "copy"; btn.setAttribute("aria-label", "Copy command");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = "copied"; setTimeout(function () { btn.textContent = "copy"; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { if (document.execCommand("copy")) done(); } catch (e) {}
+      t.remove();
+    }
+  });
+  el.append(span, btn);
+});
+</script>
+</body>
+</html>

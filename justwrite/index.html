@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" data-theme="screen">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>justwrite</title>
+<meta name="description" content="justwrite is a distraction-free editor for prose: a centered page and one line at the foot that tells you where you are.">
+<script>try{var t=localStorage.getItem("justwrite-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="page">
+  <div class="top"><a href="../">← mawceron.github.io</a></div>
+
+  <h1>justwrite: A page, and nothing else.<span class="caret"></span></h1>
+
+  <p>Black screen, a centered page, and one line at the foot that tells you where you are.</p>
+
+  <figure class="shot">
+    <img class="shot-screen" src="shot-screen.png" width="880" height="500" alt="justwrite open on a draft: a centred page of text with the version, file name and F1 Help on the status line, in the screen theme">
+    <img class="shot-paper" src="shot-paper.png" width="880" height="500" alt="justwrite open on a draft, in the paper theme: dark ink on a light page">
+    <img class="shot-mono" src="shot-mono.png" width="880" height="500" alt="justwrite open on a draft, in the mono theme: grayscale on black">
+    <figcaption>justwrite v1.0.0 opening a draft. It follows the theme you pick below.</figcaption>
+  </figure>
+
+  <div class="panel" role="navigation" aria-label="Sections">
+    <div class="frame"><span class="t">open · justwrite/</span>
+      <div class="files">
+        <a href="../">../</a>
+        <a href="#about">about/</a>
+        <a href="#install">install/</a>
+        <a href="#themes">themes/</a>
+        <a href="#keys">keys/</a>
+        <a class="f" href="https://github.com/MawCeron/justwrite#readme">README.md</a>
+        <a class="f" href="https://github.com/MawCeron/justwrite/blob/main/CHANGELOG.md">CHANGELOG.md</a>
+        <a class="f" href="https://github.com/MawCeron/justwrite/blob/main/LICENSE">LICENSE</a>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="about">What is this?</h2>
+
+  <p>A text editor for writing prose, not code. There are no toolbars, no menus, no line numbers and no frame around the page. Just text, centered, never wider than 82 columns, because lines longer than that are hard to track back to.</p>
+
+  <p>Everything the editor knows about itself lives in a single line at the bottom: the version, the document, and the way into the help. This page is set the same way.</p>
+
+  <p><em>One static binary, no cgo, no display server. It runs anywhere you can open a terminal, including a headless writerdeck.</em></p>
+
+  <h2 id="install">Install</h2>
+
+  <p>Packages and binaries for Linux, macOS and Windows, for x86-64 and ARM, on the <a href="https://github.com/MawCeron/justwrite/releases">releases page</a>. Swap amd64 for arm64 on a Raspberry Pi or an Apple Silicon Mac.</p>
+
+  <h3>Debian, Ubuntu</h3>
+  <p class="cmd">sudo dpkg -i justwrite_*_linux_amd64.deb</p>
+
+  <h3>Fedora, RHEL, openSUSE</h3>
+  <p class="cmd">sudo rpm -i justwrite_*_linux_amd64.rpm</p>
+
+  <h3>Anywhere else</h3>
+  <p class="cmd">tar xzf justwrite_*_linux_amd64.tar.gz
+sudo install justwrite /usr/local/bin/</p>
+
+  <h3>With Go</h3>
+  <p class="cmd">go install github.com/MawCeron/justwrite@latest</p>
+
+  <p>Then open a document: <strong>justwrite draft.md</strong></p>
+
+  <h2 id="themes">Three themes</h2>
+
+  <p>Cycle them with ← / → from the help panel (F1). NO_COLOR wins over all three. Try them on this page:</p>
+
+  <div class="themes" role="group" aria-label="Page theme">
+    <button type="button" data-theme="screen" aria-pressed="true">screen</button>
+    <button type="button" data-theme="paper" aria-pressed="false">paper</button>
+    <button type="button" data-theme="mono" aria-pressed="false">mono</button>
+  </div>
+
+  <div class="rows">
+    <span>screen</span><span>The default. Pure ANSI, 0 to 15: it adopts the colour scheme your terminal already has.</span>
+    <span>paper</span><span>Dark ink on an actual light page, not just recoloured text. For e-ink writerdecks and direct sunlight.</span>
+    <span>mono</span><span>Grayscale ANSI, for terminals with no truecolor.</span>
+  </div>
+
+  <h2 id="keys">Learn them once</h2>
+
+  <p>Every action is a keyboard shortcut; you learn them once and they disappear.</p>
+
+  <div class="panel">
+    <div class="frame"><span class="t">help</span>
+      <div class="help">
+        <div><span>save</span><small>ctrl+s</small></div>
+        <div><span>open a file</span><small>ctrl+o</small></div>
+        <div><span>new document</span><small>ctrl+n</small></div>
+        <div><span>quit</span><small>ctrl+q</small></div>
+        <div><span>undo</span><small>ctrl+z</small></div>
+        <div><span>redo</span><small>ctrl+y</small></div>
+        <div><span>select all</span><small>ctrl+a</small></div>
+        <div><span>copy</span><small>ctrl+c</small></div>
+        <div><span>cut</span><small>ctrl+x</small></div>
+        <div><span>paste</span><small>ctrl+v</small></div>
+        <div><span>stats</span><small>ctrl+t</small></div>
+        <div><span>find</span><small>ctrl+f</small></div>
+        <div><span>jump a word</span><small>ctrl+←→</small></div>
+        <div><span>delete a word</span><small>ctrl+w</small></div>
+        <div><span>extend selection</span><small>shift+↑↓←→</small></div>
+        <div><span>scroll a page</span><small>pgup/pgdn</small></div>
+        <div><span>jump to start or end</span><small>ctrl+home/end</small></div>
+        <div><span>insert 4 spaces</span><small>tab</small></div>
+        <div><span>help</span><small>f1</small></div>
+      </div>
+      <span class="hint">←→ theme</span>
+    </div>
+  </div>
+
+  <p class="muted">Undo works in bursts: one Ctrl+Z takes back a word, not a letter.</p>
+
+  <h2>Details worth knowing</h2>
+
+  <p><strong>Saving is atomic.</strong> Writes go to a temporary file beside the document and are renamed into place, so a failed save leaves the previous draft intact.</p>
+
+  <p><strong>Unsaved changes survive a crash.</strong> A hidden swap file is written every few seconds while there is something unsaved. If it is newer on the next open, justwrite offers to recover it.</p>
+
+  <p><strong>Text is measured in terminal cells.</strong> CJK text, emoji and combining marks stay inside the page, and the cursor, selection and Backspace step over whole characters, never half of one.</p>
+
+  <p><strong>Saving follows symlinks.</strong> A document opened through a link is written to what the link points at, and the link stays.</p>
+
+  <p><strong>Only UTF-8 files open.</strong> Anything else, such as Latin-1 or Windows-1252, is refused with the reason instead of being rewritten with replacement characters on the next save.</p>
+
+  <p><strong>The clipboard travels.</strong> Copying works over SSH and inside tmux, with no display server.</p>
+
+  <p><strong>It notices when a file changes.</strong> If the file changed on disk, Ctrl+S stops and offers three ways out: reload, overwrite, or save as.</p>
+
+  <p class="muted">MIT © 2026 Mauricio Cerón ·
+    <a href="https://github.com/MawCeron/justwrite">source</a> ·
+    <a href="https://github.com/MawCeron/justwrite/blob/main/CHANGELOG.md">changelog</a> ·
+    <a href="https://github.com/MawCeron/justwrite/issues">issues</a></p>
+</main>
+
+<div class="statusline">
+  <div class="left"><a class="badge ver" href="https://github.com/MawCeron/justwrite/releases/latest">v1.0.0</a><span class="file">justwrite.md</span></div>
+  <a class="badge chip" href="#keys">F1 Help</a>
+</div>
+
+<script>
+// Same three themes as the app; the choice is remembered on this browser only.
+document.querySelectorAll(".themes button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    document.documentElement.dataset.theme = b.dataset.theme;
+    document.querySelectorAll(".themes button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+    try { localStorage.setItem("justwrite-theme", b.dataset.theme); } catch (e) {}
+  });
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  var bs = Array.from(document.querySelectorAll(".themes button")), i = bs.findIndex(function (b) { return b.dataset.theme === document.documentElement.dataset.theme; });
+  bs[(i + (e.key === "ArrowRight" ? 1 : bs.length - 1)) % bs.length].click();
+});
+(function () {
+  var t = document.documentElement.dataset.theme;
+  document.querySelectorAll(".themes button").forEach(function (o) { o.setAttribute("aria-pressed", o.dataset.theme === t); });
+})();
+
+// Copy buttons on the terminal commands.
+document.querySelectorAll(".cmd, .code-line").forEach(function (el) {
+  var text = el.innerText.trim();
+  var span = document.createElement("span");
+  span.className = "cmd-text";
+  while (el.firstChild) span.appendChild(el.firstChild);
+  var btn = document.createElement("button");
+  btn.type = "button"; btn.className = "copy"; btn.textContent = "copy"; btn.setAttribute("aria-label", "Copy command");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = "copied"; setTimeout(function () { btn.textContent = "copy"; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { if (document.execCommand("copy")) done(); } catch (e) {}
+      t.remove();
+    }
+  });
+  el.append(span, btn);
+});
+</script>
+</body>
+</html>
