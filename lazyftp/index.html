@@ -15,6 +15,7 @@
 <header class="site-header">
   <a class="brand" href="./">lazy<span>ftp</span></a>
   <nav class="site-nav">
+    <a href="#connect">connect</a>
     <a href="#flow">how it works</a>
     <a href="#keys">keys</a>
     <a href="#roadmap">roadmap</a>
@@ -70,7 +71,46 @@
       <div class="panel warn-panel">
         <p class="panel-title">Connection failing?</p>
         <p>Put the whole exchange in a file you can attach to an issue. Passwords are masked.</p>
-        <p class="code-line" style="margin-bottom:0">lazyftp --verbose --log-file lazyftp.log</p>
+        <p class="code-line">lazyftp --verbose --log-file lazyftp.log</p>
+        <p>Verbose lines are marked DEBUG. For FTP and FTPS they are the raw control dialogue; SFTP has no equivalent, so you get one line per request instead.</p>
+        <p style="margin-bottom:0"><b>FTPS refused and the credentials are right?</b> The server most likely does not offer TLS. Connect over FTP instead.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="connect">
+    <h2>Connect your way.</h2>
+    <div class="panel">
+      <p class="panel-title">From the command line</p>
+      <div class="usage">
+        <div class="row"><code>lazyftp</code><span>Opens the connection dialog</span></div>
+        <div class="row"><code>lazyftp nas</code><span>A favorite, or a Host from ~/.ssh/config</span></div>
+        <div class="row"><code>lazyftp ana@nas.lan</code><span>user@host: FTP unless the port or scheme says otherwise</span></div>
+        <div class="row"><code>lazyftp ana@nas.lan:22</code><span>Port 22 means SFTP, 990 means FTPS</span></div>
+        <div class="row"><code>lazyftp sftp://ana@nas.lan:2222</code><span>The scheme is explicit: ftp, ftps or sftp</span></div>
+        <div class="row"><code>lazyftp -i ~/.ssh/work sftp://nas</code><span>A private key for this connection</span></div>
+      </div>
+      <p class="dl-note">A destination connects at once when nothing more is needed: a stored password, or SFTP with an agent or key. Otherwise the connection dialog opens filled in. The password is never accepted on the command line, so it stays out of your shell history: <b>user:pass@host</b> is refused. A saved name wins over a host of the same name. Flags go before the destination.</p>
+    </div>
+    <div class="lf-install" style="margin-top:20px">
+      <div class="panel">
+        <p class="panel-title">In the connection dialog (Ctrl+L)</p>
+        <div class="usage">
+          <div class="row"><code>Proto</code><span>FTP, FTPS or SFTP. Cycle with ← / →</span></div>
+          <div class="row"><code>Host, User, Pass</code><span>Server, username and password</span></div>
+          <div class="row"><code>Port</code><span>Leave empty for the default: 21 for FTP and FTPS, 22 for SFTP</span></div>
+          <div class="row"><code>Key</code><span>Optional, SFTP only: path to a private key (~ works). Tried before the agent and the default keys. If it is encrypted, type its passphrase in Pass</span></div>
+        </div>
+        <p class="dl-note"><b>Enter</b> connects. <b>Esc</b> closes the dialog, or gives up on an attempt that is taking too long. SFTP uses the ssh-agent, key files and verified host keys, and reopens the session if the server drops it. FTPS certificates are verified, so a self-signed one is refused.</p>
+      </div>
+      <div class="panel">
+        <p class="panel-title">Saved connections</p>
+        <div class="usage">
+          <div class="row"><code>Favorites</code><span><b>Ctrl+S</b> saves host, user, port and protocol under a name. <b>Ctrl+O</b> lists them: Enter connects, e edits, d deletes</span></div>
+          <div class="row"><code>Recent</code><span><b>Ctrl+R</b> lists the last ten, most recent first. Passwords are never remembered</span></div>
+          <div class="row"><code>~/.ssh/config</code><span>Every concrete Host shows up in the Ctrl+O list, tagged ssh, with its HostName, User, Port and IdentityFile. Read only. ProxyJump, ProxyCommand and Match are not supported</span></div>
+        </div>
+        <p class="dl-note">Passwords are never written to the config file. While saving, <b>Tab</b> toggles “remember password”, which stores it in the system keyring (Secret Service, Keychain or Credential Manager).</p>
       </div>
     </div>
   </section>
@@ -90,7 +130,8 @@
       <div class="key-group" style="--c:var(--accent)">
         <h3>Global</h3>
         <div class="row"><span>Open the connection dialog</span><b>Ctrl+L</b></div>
-        <div class="row"><span>Switch local / remote</span><b>Tab</b></div>
+        <div class="row"><span>Switch panel within the current group</span><b>Tab</b></div>
+        <div class="row"><span>Switch between Local/Remote and Log/Processes</span><b>Shift+Tab</b></div>
         <div class="row"><span>Upload / download marked files</span><b>U / D</b></div>
         <div class="row"><span>Disconnect</span><b>Ctrl+X</b></div>
         <div class="row"><span>Help screen</span><b>?</b></div>
@@ -101,7 +142,7 @@
         <div class="row"><span>Move down</span><b>j / ↓</b></div>
         <div class="row"><span>Move up</span><b>k / ↑</b></div>
         <div class="row"><span>Open directory, or show file size and time</span><b>l / Enter</b></div>
-        <div class="row"><span>Go up one level</span><b>- / Backspace</b></div>
+        <div class="row"><span>Go up one level</span><b>h / - / Backspace</b></div>
         <div class="row"><span>Mark / unmark</span><b>Space</b></div>
         <div class="row"><span>Transfer</span><b>t</b></div>
         <div class="row"><span>Refresh listing</span><b>r</b></div>
@@ -123,6 +164,14 @@
         <div class="row"><span>Recent connections</span><b>Ctrl+R</b></div>
         <div class="row"><span>Close or abandon</span><b>Esc</b></div>
       </div>
+      <div class="key-group" style="--c:var(--success)">
+        <h3>Log &amp; Processes</h3>
+        <div class="row"><span>Scroll down</span><b>j / ↓</b></div>
+        <div class="row"><span>Scroll up</span><b>k / ↑</b></div>
+        <div class="row"><span>Page up</span><b>b / PgUp</b></div>
+        <div class="row"><span>Page down</span><b>f / PgDn</b></div>
+        <div class="row"><span>Switch between Log and Processes</span><b>Tab</b></div>
+      </div>
     </div>
   </section>
 
@@ -130,17 +179,47 @@
     <h2>What you get</h2>
     <div class="features">
       <div><i>✓</i><span>FTP, FTPS and SFTP support</span></div>
-      <div><i>✓</i><span>Dual-pane layout, local and remote side by side</span></div>
-      <div><i>✓</i><span>Real-time transfer progress with direction indicators</span></div>
-      <div><i>✓</i><span>Multiple file selection and batch transfers</span></div>
+      <div><i>✓</i><span>SFTP with the ssh-agent, key files and verified host keys; a dropped session reopens itself</span></div>
+      <div><i>✓</i><span>Favorites, recent connections and the servers in ~/.ssh/config; passwords only in the system keyring</span></div>
+      <div><i>✓</i><span>Connect from the command line: lazyftp user@host, or a saved name</span></div>
+      <div><i>✓</i><span>Dual-pane layout, local and remote side by side, responsive down to an 80x24 terminal</span></div>
+      <div><i>✓</i><span>File size and modification date, sortable by name, size or date, with the exact byte count and full timestamp a keystroke away</span></div>
+      <div><i>✓</i><span>Fuzzy filtering and jump-to-path</span></div>
+      <div><i>✓</i><span>Create, rename and delete files and directories, on either panel</span></div>
+      <div><i>✓</i><span>Hidden (dot) files hidden by default, with a per-panel toggle</span></div>
+      <div><i>✓</i><span>--highlight-diff marks entries that differ between Local and Remote</span></div>
+      <div><i>✓</i><span>Color themes from a file, with Catppuccin Mocha and Latte built in</span></div>
+      <div><i>✓</i><span>Real-time transfer progress with direction indicators, including recursive directory upload and download</span></div>
+      <div><i>✓</i><span>Multiple file selection and batch transfers, with direction-independent U / D shortcuts</span></div>
       <div><i>✓</i><span>Keyboard-driven navigation, vim-style and arrows</span></div>
-      <div><i>✓</i><span>Context-aware hints bar</span></div>
-      <div><i>✓</i><span>Transfer and connection log</span></div>
-      <div><i>✓</i><span>Rename, delete and create directories; hidden-file toggle</span></div>
-      <div><i>✓</i><span>Fuzzy filter, sorting and jump to path</span></div>
-      <div><i>✓</i><span>SSH keys and agent, known_hosts checking, passwords in the OS keyring</span></div>
-      <div><i>✓</i><span>Favorite and recent connections, including hosts from ~/.ssh/config</span></div>
-      <div><i>✓</i><span>Loadable color themes, with Catppuccin Mocha and Latte built in</span></div>
+      <div><i>✓</i><span>A help screen (?) and a context-aware hints bar</span></div>
+      <div><i>✓</i><span>Scrollable transfer and connection log, and a scrollable process list</span></div>
+    </div>
+    <p class="dl-note" style="margin-top:24px">Built with <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a>, <a href="https://github.com/charmbracelet/bubbles">Bubbles</a> and <a href="https://github.com/charmbracelet/lipgloss">Lip Gloss</a>.</p>
+  </section>
+
+  <section class="wrap section" id="themes">
+    <h2>Colors from a file.</h2>
+    <div class="lf-install">
+      <div class="panel">
+        <p class="panel-title">Pick a theme</p>
+        <p class="dl-note" style="margin-top:0">A theme is a TOML file in a <b>themes</b> directory next to <b>config.toml</b> (<b>~/.config/lazyftp/themes/</b> on Linux). Pick one by name in config.toml, without the extension, and restart. Catppuccin Mocha and Latte are built in; a file of the same name in your themes directory replaces them.</p>
+        <p class="code-line" style="margin-top:14px">theme = "catppuccin-mocha"</p>
+      </div>
+      <div class="panel">
+        <p class="panel-title">Make your own</p>
+        <p class="dl-note" style="margin-top:0">Adding a theme is adding a file, no code involved. It has a <b>[dark]</b> and a <b>[light]</b> table, used according to your terminal’s background, and each names any of the 13 tokens as #RGB or #RRGGBB. A token you leave out keeps the built-in color. <a href="https://github.com/MawCeron/lazyftp/blob/develop/docs/themes/default.toml">default.toml</a> lists every token and what it colors, and <a href="https://github.com/MawCeron/lazyftp/blob/develop/docs/themes/borland.toml">borland.toml</a> is a complete example. A theme that cannot be loaded is explained on the console, and lazyftp starts with the default colors. <b>NO_COLOR</b> wins over any theme.</p>
+      </div>
+    </div>
+    <div class="theme-shots">
+      <figure>
+        <img src="theme-catppuccin-mocha.png" alt="lazyftp in the catppuccin-mocha theme: dark lilac and blue panels with green progress bars" width="1400" height="845" loading="lazy">
+        <figcaption><b>catppuccin-mocha</b>, built in</figcaption>
+      </figure>
+      <figure>
+        <img src="theme-borland.png" alt="lazyftp in the borland theme: Turbo Pascal blue background with cyan borders and yellow highlights" width="1400" height="845" loading="lazy">
+        <figcaption><b>borland</b>, the example theme in docs/themes</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -177,6 +256,7 @@
     <a href="https://github.com/MawCeron/lazyftp/blob/develop/CHANGELOG.md">changelog</a>
     <a href="https://github.com/MawCeron/lazyftp/blob/develop/ROADMAP.md">roadmap</a>
     <a href="https://github.com/MawCeron/lazyftp/blob/develop/docs/CONTRIBUTING.md">contributing</a>
+    <a href="https://github.com/MawCeron/lazyftp/blob/develop/docs/architecture.md">architecture</a>
     <a href="../">all projects</a>
   </nav>
 </footer>
