@@ -5,13 +5,13 @@
   --bg: #202020;
   --bar: #282828;
   --fg: #dcdcdc;
-  --muted: #6f7074;
+  --muted: #8f9196;
   --accent: #33b1ff;
   --badge: #78a9ff;
   --on-badge: #282828;
-  --help-bg: #484848;
+  --help-bg: #3c3c3c;
   --help-fg: #52bdff;
-  --file: #484848;
+  --file: #9a9ca2;
   --on-accent: #161616;
   --panel: #2a2a2a;
   --row: #3a3a3a;
@@ -21,15 +21,15 @@
 
 /* themes, switched from the Themes section (same three as the app) */
 html[data-theme="paper"] {
-  --bg: #f7f2ea; --bar: #e3dfd2; --fg: #2b2b28; --muted: #8a867d;
+  --bg: #f7f2ea; --bar: #e3dfd2; --fg: #2b2b28; --muted: #6b675e;
   --accent: #3b5b73; --badge: #2f495c; --on-badge: #ffffff; --on-accent: #f7f2ea;
-  --help-bg: #d8d0be; --help-fg: #497085; --file: #79756c;
+  --help-bg: #d8d0be; --help-fg: #365b70; --file: #5f5b52;
   --panel: #ede8de; --row: #ddd7c8; --mark: #d9d3c0;
 }
 html[data-theme="mono"] {
-  --bg: #101010; --bar: #000000; --fg: #bdbdbd; --muted: #6a6a6a;
-  --accent: #e4e4e5; --badge: #555555; --on-badge: #000000; --on-accent: #101010;
-  --help-bg: #000000; --help-fg: #555555; --file: #555555;
+  --bg: #101010; --bar: #000000; --fg: #bdbdbd; --muted: #8c8c8c;
+  --accent: #e4e4e5; --badge: #8f8f8f; --on-badge: #000000; --on-accent: #101010;
+  --help-bg: #000000; --help-fg: #8a8a8a; --file: #8a8a8a;
   --panel: #1a1a1a; --row: #2c2c2c; --mark: #2c2c2c;
 }
 
@@ -40,7 +40,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--mono);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.55;
   padding-bottom: 48px;
 }
@@ -110,7 +110,7 @@ html[data-theme="screen"] .shot-screen, html[data-theme="paper"] .shot-paper, ht
 
 /* the single status line, one terminal row at the foot, as in the app */
 .statusline {
-  position: fixed; left: 0; right: 0; bottom: 0; height: 24px; padding: 0 5px;
+  position: fixed; left: 0; right: 0; bottom: 0; height: 24px; padding: 0 16px;
   display: flex; align-items: stretch; justify-content: space-between; gap: 2ch;
   background: var(--bar); font-size: 14px; line-height: 24px;
 }
@@ -122,7 +122,7 @@ html[data-theme="screen"] .shot-screen, html[data-theme="paper"] .shot-paper, ht
 .statusline .file { color: var(--file); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 @media (max-width: 640px) {
-  body { font-size: 14px; }
+  .cmd-text { white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: visible; }
   h1 { font-size: 22px; }
   .page { padding: 40px 18px 64px; }
   .rows { grid-template-columns: 1fr; }

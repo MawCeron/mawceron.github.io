@@ -5,26 +5,29 @@ const GITHUB = "https://github.com/MawCeron";
 const PROJECTS = {
   featured: [
     {
+      name: "lazyftp",
+      split: 4,   // "lazy" + "ftp": the second part takes the accent, as in its own header
+      accent: "var(--teal)",
+      blurb: "A simple, keyboard-driven TUI client inspired by lazygit. Dual panes, batch transfers, live progress.",
+      image: "assets/lazyftp.png",
+      size: [1400, 845],
+      alt: "lazyftp connected over SFTP: local and remote panels side by side, two files uploaded and one downloaded",
+      version: "v0.4.1",
+      meta: "Go · Bubble Tea · Lip Gloss · MIT",
+      page: "lazyftp/",
+      repo: GITHUB + "/lazyftp",
+    },
+    {
       name: "justwrite",
       accent: "var(--cyan)",
       blurb: "A distraction-free editor. Black screen, a centered page, and one line at the foot that tells you where you are.",
       image: "assets/justwrite.png",
       size: [1400, 795],
       alt: "justwrite open on a draft: a centred page of text with the version, file name and F1 Help on one line at the foot",
+      version: "v1.0.0",
       meta: "Go · Bubble Tea · MIT",
       page: "justwrite/",
       repo: GITHUB + "/justwrite",
-    },
-    {
-      name: "lazyftp",
-      accent: "var(--teal)",
-      blurb: "A simple, keyboard-driven TUI client inspired by lazygit. Dual panes, batch transfers, live progress.",
-      image: "assets/lazyftp.png",
-      size: [1400, 845],
-      alt: "lazyftp connected over SFTP: local and remote panels side by side, two files uploaded and one downloaded",
-      meta: "Go · Bubble Tea · Lip Gloss · MIT",
-      page: "lazyftp/",
-      repo: GITHUB + "/lazyftp",
     },
   ],
   others: [
