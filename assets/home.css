@@ -63,6 +63,7 @@ code, .code { font-family: var(--code); }
 }
 .btn:hover { text-decoration: none; filter: brightness(1.15); }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn svg { width: 18px; height: 18px; margin-right: 8px; fill: currentColor; }
 
 /* code blocks */
 .cmd {
@@ -91,17 +92,16 @@ code, .code { font-family: var(--code); }
 .home-hero h1 { font-size: 56px; line-height: 1.1; margin-bottom: 16px; }
 .home-hero p { font-size: 18px; max-width: 620px; line-height: 1.6; }
 
-.featured { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; }
-.feature-card {
-  --accent: var(--blue);
-  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 32px;
-  display: flex; flex-direction: column; gap: 24px;
-}
+.featured { display: grid; grid-template-columns: 1fr; gap: 80px; }
+.feature-card { display: grid; grid-template-columns: minmax(240px, 300px) 1fr; gap: 48px; align-items: center; }
+.feature-card .text { display: flex; flex-direction: column; gap: 20px; }
 .feature-card h3 { font-size: 40px; }
 .feature-card p { font-size: 17px; line-height: 1.55; }
-.feature-card img { width: 100%; height: 190px; object-fit: cover; object-position: top left; border-radius: 6px; background: var(--bg); }
 .feature-card .meta { font-size: 13px; color: var(--muted); }
-.feature-card .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
+.feature-card .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.feature-card .shot { display: block; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--bg); }
+.feature-card .shot:hover { border-color: var(--accent); }
+.feature-card img { display: block; width: 100%; height: auto; }
 
 .thread-title { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 28px; }
 .thread { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
@@ -126,5 +126,9 @@ code, .code { font-family: var(--code); }
 
 @media (max-width: 720px) {
   .home-hero h1 { font-size: 40px; }
-  .featured { grid-template-columns: 1fr; }
+  .featured { gap: 56px; }
+  .feature-card { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 960px) {
+  .feature-card { grid-template-columns: 1fr; gap: 24px; }
 }
