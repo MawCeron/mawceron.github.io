@@ -19,7 +19,7 @@ const PROJECTS = {
       accent: "var(--blue)",
       blurb: "A simple, keyboard-driven TUI client inspired by lazygit. Dual panes, batch transfers, live progress.",
       image: "assets/lazyftp-demo.gif",
-      alt: "lazyftp: uploading a local file and downloading a remote one",
+      alt: "lazyftp: connecting over SFTP, uploading two local files, then downloading a remote one",
       meta: "Go · Bubble Tea · Lip Gloss · MIT",
       page: "lazyftp/",
       repo: GITHUB + "/lazyftp",
