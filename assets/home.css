@@ -100,6 +100,7 @@ code, .code { font-family: var(--code); }
 /* each name is set as it is on its own page */
 .brand-lazyftp span { color: var(--accent); }
 .brand-justwrite { font-family: "JetBrains Mono", var(--code); font-size: 32px; font-weight: 700; letter-spacing: 0; color: var(--accent); }
+.brand-Wassup { font-weight: 700; color: var(--accent); }
 .feature-card p { font-size: 17px; line-height: 1.55; }
 .feature-card .meta { font-size: 14px; color: var(--muted); }
 .feature-card .ver { color: var(--accent); font-weight: 600; }

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wassup</title>
+<meta name="description" content="Wassup is an unofficial, native WhatsApp client for GNOME. It speaks the protocol without a web view, so the daemon and the window use about 64 MB together.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="headerbar">
+  <a href="../">← mawceron.github.io</a>
+  <span class="title">Wassup</span>
+  <a class="end" href="https://github.com/MawCeron/Wassup">Source ↗</a>
+</header>
+
+<main>
+  <div class="hero">
+    <img class="lockup" src="wassup-lockup.svg" width="417" height="112" alt="Wassup">
+    <h1>WhatsApp on GNOME, in 64 MB.</h1>
+    <p>An unofficial, native client. It speaks the protocol itself instead of wrapping WhatsApp Web, so it looks like the rest of your desktop and stays light on memory.</p>
+    <div class="actions">
+      <a class="pill suggested" id="dl" href="https://github.com/MawCeron/Wassup/releases/latest">Download for Fedora</a>
+      <a class="pill" href="https://github.com/MawCeron/Wassup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Source</a>
+    </div>
+    <p class="ver-note" id="ver-note"><span id="ver">v0.1.0</span>, the first release · early development · GPL-3.0-or-later</p>
+  </div>
+
+  <div class="banner" role="note">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a1.5 1.5 0 0 1 1.3.75l6 10.5A1.5 1.5 0 0 1 14 14.5H2a1.5 1.5 0 0 1-1.3-2.25l6-10.5A1.5 1.5 0 0 1 8 1Zm-.9 4.5.4 4h1l.4-4H7.1ZM8 10.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
+    <p><b>Unofficial client.</b> Meta could restrict accounts that use it, so try it with a secondary number first. Wassup is not affiliated with Meta or WhatsApp.</p>
+  </div>
+
+  <figure class="shot">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="chat-dark.png">
+      <img src="chat-light.png" width="1280" height="720" alt="A group chat in Wassup with a photo, a reaction, a link preview, a reply and a mention, next to a list of chats with unread counts">
+    </picture>
+    <figcaption>A group chat in Wassup. The window follows your light or dark style, and so does this page.</figcaption>
+  </figure>
+
+  <section id="features">
+    <h2>What it does</h2>
+    <p class="lead">One account, linked as another device of your phone.</p>
+    <ul class="boxed">
+      <li><div class="t"><b>Link by QR code</b><span>Your recent history comes with it, and older messages load as you scroll up.</span></div></li>
+      <li><div class="t"><b>Every kind of message you use most</b><span>Text, photos, videos, documents, stickers, GIFs and voice notes, with replies, reactions and link previews.</span></div></li>
+      <li><div class="t"><b>Mentions</b><span>A mention shows the person's name. Typing @ in a group lists its members, and a mention of you notifies even in a muted chat.</span></div></li>
+      <li><div class="t"><b>Stickers from your phone</b><span>Your favorites, kept in sync, plus recent and animated ones. New ones can be made from images.</span></div></li>
+      <li><div class="t"><b>Ticks, counts and pictures</b><span>Delivery and read marks, unread counts, profile and group pictures. Disappearing messages and locked chats work as on the phone.</span></div></li>
+      <li><div class="t"><b>Notifications with the window closed</b><span>They can hide the message text, and a status icon shows the unread count.</span></div></li>
+      <li><div class="t"><b>Search</b><span>Find a chat, or a message inside one.</span></div></li>
+      <li><div class="t"><b>A GNOME app</b><span>GTK 4 and libadwaita, following the GNOME guidelines. Works with the keyboard and screen readers, and is translated into Spanish.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="memory">
+    <h2>Light on memory</h2>
+    <p class="lead">Clients that wrap WhatsApp Web carry a browser with them. Wassup doesn't.</p>
+    <div class="chart">
+      <h3>Memory in use, daemon and window together (PSS, MB)</h3>
+      <div class="bars" role="list">
+        <span class="name me">Wassup</span>
+        <div class="track row me" role="listitem" tabindex="0" title="Wassup: about 64 MB" aria-label="Wassup: about 64 MB"><span class="bar" style="width:calc((100% - 72px) * 64 / 1300)"></span><span class="val">64 MB</span></div>
+        <span class="name">Whats4Linux</span>
+        <div class="track row" role="listitem" tabindex="0" title="Whats4Linux: 384 MB" aria-label="Whats4Linux: 384 MB"><span class="bar" style="width:calc((100% - 72px) * 384 / 1300)"></span><span class="val">384 MB</span></div>
+        <span class="name">Karere</span>
+        <div class="track row" role="listitem" tabindex="0" title="Karere: about 1.3 GB" aria-label="Karere: about 1.3 GB"><span class="bar" style="width:calc(100% - 72px)"></span><span class="val">1.3 GB</span></div>
+      </div>
+      <p class="note">A real account of 29 chats and about 3,500 messages, no chat open. The other clients ran on the same account but with different history, so read it as an order of magnitude. Method and every figure: <a href="https://github.com/MawCeron/Wassup/blob/main/docs/performance.md">docs/performance.md</a>.</p>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>Install</h2>
+    <p class="lead">The first release is an RPM for Fedora 44. Other distributions build it from source.</p>
+
+    <div class="step"><b>1. Download the RPM</b> from the button above or the <a href="https://github.com/MawCeron/Wassup/releases/latest">releases page</a>, then install it:</div>
+    <p class="cmd">sudo dnf install ./wassup-*.x86_64.rpm</p>
+
+    <div class="step"><b>2. Open Wassup</b> from the application launcher and scan the QR code with your phone, as when linking any other device.</div>
+
+    <p class="after">Building it yourself: <a href="https://github.com/MawCeron/Wassup/blob/main/docs/development.md">docs/development.md</a> covers the daemon and the window, <a href="https://github.com/MawCeron/Wassup/blob/main/docs/packaging.md">docs/packaging.md</a> the RPM.</p>
+
+    <p class="after">If the window says it can't reach the Wassup service, start the daemon, and read its log if that doesn't help:</p>
+    <p class="cmd">systemctl --user start wassupd.socket</p>
+    <p class="cmd">journalctl --user -u wassupd</p>
+  </section>
+
+  <section id="keys">
+    <h2>Using it</h2>
+    <p class="lead">Closing the window leaves the daemon running, so notifications keep arriving.</p>
+    <ul class="boxed">
+      <li><div class="t"><b>Quit</b><span>After confirming, stops both the window and the daemon until you open Wassup again.</span></div><span class="keys"><kbd>Ctrl</kbd> <kbd>Q</kbd></span></li>
+      <li><div class="t"><b>Preferences</b></div><span class="keys"><kbd>Ctrl</kbd> <kbd>,</kbd></span></li>
+      <li><div class="t"><b>Keyboard shortcuts</b></div><span class="keys"><kbd>Ctrl</kbd> <kbd>?</kbd></span></li>
+      <li><div class="t"><b>Show or close the window</b><span>Run <code>wassup --toggle</code>. On Wayland, bind it to a key in Settings → Keyboard → Custom Shortcuts.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="how">
+    <h2>How it works</h2>
+    <p class="lead">Two processes that talk over a Unix socket with Protocol Buffers.</p>
+    <ul class="boxed">
+      <li><span class="tag">Go</span><div class="t"><b>The daemon</b><span>Speaks the protocol with <a href="https://github.com/tulir/whatsmeow">whatsmeow</a> and stores messages in SQLite. It runs as a systemd user service, so messages keep arriving when the window is closed.</span></div></li>
+      <li><span class="tag">Rust</span><div class="t"><b>The window</b><span>GTK 4 and libadwaita, drawing in software by default to save memory. Emoji come from a bitmap font in the package, because the default emoji font adds hundreds of megabytes once emoji appear.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="next">
+    <h2>What comes next</h2>
+    <p class="lead">Each version has a theme, in this order. There are no dates.</p>
+    <ul class="boxed">
+      <li><span class="tag">0.2.0</span><div class="t"><b>A chat as faithful as the phone's</b><span>Edited and deleted messages, notifications for reactions, forwarding.</span></div></li>
+      <li><span class="tag">0.3.0</span><div class="t"><b>More kinds of message</b><span>Polls, contacts and locations; waveforms for voice notes and thumbnails for videos you send.</span></div></li>
+      <li><span class="tag">0.4.0</span><div class="t"><b>Managing chats</b><span>Archiving, muting, pinning and deleting chats, and showing which ones are muted.</span></div></li>
+      <li><span class="tag">0.5.0</span><div class="t"><b>Accounts and access</b><span>Several accounts at once, linking by phone number or passkey, and an application lock.</span></div></li>
+      <li><span class="tag">Any</span><div class="t"><b>A COPR repository</b><span>So Fedora installs and updates Wassup with dnf.</span></div></li>
+    </ul>
+    <p class="after">Calls are not planned. The full list is in the <a href="https://github.com/MawCeron/Wassup/blob/main/docs/roadmap.md">roadmap</a>; bugs and requests go to the <a href="https://github.com/MawCeron/Wassup/issues">issues</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <span>GPL-3.0-or-later © 2026 Mauricio Cerón ·
+    <a href="https://github.com/MawCeron/Wassup">source</a> ·
+    <a href="https://github.com/MawCeron/Wassup/blob/main/CHANGELOG.md">changelog</a> ·
+    <a href="https://github.com/MawCeron/Wassup/issues">issues</a></span>
+  <span>Wassup is an unofficial client and is not affiliated with Meta or WhatsApp.</span>
+</footer>
+
+<script>
+// The version and the download point at the latest GitHub release; the static text stays if it can't be read.
+fetch("https://api.github.com/repos/MawCeron/Wassup/releases/latest")
+  .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+  .then(function (rel) {
+    if (rel.tag_name) document.getElementById("ver").textContent = rel.tag_name;
+    var rpm = (rel.assets || []).find(function (a) { return /\.x86_64\.rpm$/.test(a.name); });
+    if (!rpm) return;
+    var dl = document.getElementById("dl");
+    dl.href = rpm.browser_download_url;
+    dl.title = rpm.name + " · " + (rpm.size / 1048576).toFixed(1) + " MB";
+    var fc = rpm.name.match(/\.fc(\d+)\./);
+    if (fc) dl.textContent = "Download for Fedora " + fc[1];
+  })
+  .catch(function () {});
+
+// Copy buttons on the commands.
+document.querySelectorAll(".cmd").forEach(function (el) {
+  var text = el.innerText.trim();
+  var span = document.createElement("span");
+  span.className = "cmd-text";
+  while (el.firstChild) span.appendChild(el.firstChild);
+  var btn = document.createElement("button");
+  btn.type = "button"; btn.className = "copy"; btn.textContent = "copy"; btn.setAttribute("aria-label", "Copy command");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = "copied"; setTimeout(function () { btn.textContent = "copy"; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { if (document.execCommand("copy")) done(); } catch (e) {}
+      t.remove();
+    }
+  });
+  el.append(span, btn);
+});
+</script>
+</body>
+</html>

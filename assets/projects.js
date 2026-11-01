@@ -29,6 +29,18 @@ const PROJECTS = {
       page: "justwrite/",
       repo: GITHUB + "/justwrite",
     },
+    {
+      name: "Wassup",
+      accent: "#2ec27e",  // the app icon's green (GNOME Green 4)
+      blurb: "An unofficial, native WhatsApp client for GNOME. No web view: the daemon and the window use about 64 MB together, where clients that wrap WhatsApp Web use hundreds.",
+      image: "wassup/chat-dark.png",
+      size: [1280, 720],
+      alt: "A group chat in Wassup, dark style: a photo, a link preview, a reply and a mention, next to a list of chats with unread counts",
+      version: "v0.1.0",
+      meta: "Go + Rust · GTK 4 · libadwaita · GPL-3.0",
+      page: "wassup/",
+      repo: GITHUB + "/Wassup",
+    },
   ],
   others: [
     {
@@ -42,13 +54,6 @@ const PROJECTS = {
       blurb: "A command-line unit converter: distance, weight, volume, temperature, speed, area, pressure, energy, data and time, with metric, imperial, historical and astronomical units.",
       meta: "Go · MIT",
       repo: GITHUB + "/transmute",
-    },
-    {
-      name: "Wassup",
-      blurb: "An unofficial, native WhatsApp client for GNOME, built with GTK 4 and libadwaita for low RAM usage. A Go daemon handles the connection; a Rust UI handles the interface. Not installable yet. Meta may restrict accounts that use unofficial clients.",
-      meta: "Go + Rust · GPL-3.0 · early development",
-      warn: true,
-      repo: GITHUB + "/Wassup",
     },
     {
       name: "csRenamer",
