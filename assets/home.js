@@ -22,9 +22,9 @@ document.getElementById("featured").append(
           ? el("h3", { class: "name brand-" + p.name }, p.name.slice(0, p.split), el("span", { text: p.name.slice(p.split) }))
           : el("h3", { class: "name brand-" + p.name, text: p.name }),
         el("p", { text: p.blurb }),
-        el("p", { class: "meta" }, el("span", { class: "ver", text: p.version }), " · " + p.meta),
+        el("p", { class: "meta" }, el("span", { class: "ver", text: p.version }), p.meta),
         el("div", { class: "actions" },
-          el("a", { class: "btn btn-primary", href: p.page, text: "Visit site →" }),
+          el("a", { class: "btn btn-primary", href: p.page, text: "Visit site" }),
           withIcon(el("a", { class: "btn", href: p.repo, text: "Source" })),
         ),
       ),
@@ -51,16 +51,3 @@ PROJECTS.featured.forEach((p, i) => {
     .then((rel) => { if (rel.tag_name) document.querySelectorAll(".feature-card .ver")[i].textContent = rel.tag_name; })
     .catch(() => {});
 });
-
-// Entrance: each part of a section rises in once, as it comes into view.
-(function () {
-  const root = document.documentElement;
-  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { root.classList.remove("js"); return; }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-  }, { rootMargin: "0px 0px -6% 0px" });
-  document.querySelectorAll("main section").forEach((sec) => {
-    const parts = sec.querySelector("#featured") ? [...sec.querySelector("#featured").children] : [...sec.children];
-    parts.forEach((el, i) => { el.classList.add("reveal"); el.style.setProperty("--d", Math.min(i, 4) * 70 + "ms"); io.observe(el); });
-  });
-})();

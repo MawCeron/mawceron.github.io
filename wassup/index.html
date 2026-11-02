@@ -17,7 +17,7 @@
 <header class="headerbar">
   <a href="../">← mawceron.github.io</a>
   <span class="title">Wassup</span>
-  <a class="end" href="https://github.com/MawCeron/Wassup">Source ↗</a>
+  <a class="end" href="https://github.com/MawCeron/Wassup">Source</a>
 </header>
 
 <main>
@@ -26,10 +26,10 @@
     <h1>WhatsApp on GNOME, in 64 MB.</h1>
     <p>An unofficial, native client. It speaks the protocol itself instead of wrapping WhatsApp Web, so it looks like the rest of your desktop and stays light on memory.</p>
     <div class="actions">
-      <a class="pill suggested" id="dl" href="https://github.com/MawCeron/Wassup/releases/latest">Download for Fedora</a>
+      <a class="pill suggested" id="dl" href="https://github.com/MawCeron/Wassup/releases/latest" aria-label="Download for Fedora">Download for<svg class="distro" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.001 0C5.376 0 .008 5.369.004 11.992H.002v9.287h.002A2.726 2.726 0 0 0 2.73 24h9.275c6.626-.004 11.993-5.372 11.993-11.997C23.998 5.375 18.628 0 12 0zm2.431 4.94c2.015 0 3.917 1.543 3.917 3.671 0 .197.001.395-.03.619a1.002 1.002 0 0 1-1.137.893 1.002 1.002 0 0 1-.842-1.175 2.61 2.61 0 0 0 .013-.337c0-1.207-.987-1.672-1.92-1.672-.934 0-1.775.784-1.777 1.672.016 1.027 0 2.046 0 3.07l1.732-.012c1.352-.028 1.368 2.009.016 1.998l-1.748.013c-.004.826.006.677.002 1.093 0 0 .015 1.01-.016 1.776-.209 2.25-2.124 4.046-4.424 4.046-2.438 0-4.448-1.993-4.448-4.437.073-2.515 2.078-4.492 4.603-4.469l1.409-.01v1.996l-1.409.013h-.007c-1.388.04-2.577.984-2.6 2.47a2.438 2.438 0 0 0 2.452 2.439c1.356 0 2.441-.987 2.441-2.437l-.001-7.557c0-.14.005-.252.02-.407.23-1.848 1.883-3.256 3.754-3.256z"/></svg><span id="fc"></span></a>
       <a class="pill" href="https://github.com/MawCeron/Wassup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Source</a>
     </div>
-    <p class="ver-note" id="ver-note"><span id="ver">v0.1.0</span>, the first release · early development · GPL-3.0-or-later</p>
+    <p class="ver-note" id="ver-note"><span id="ver">v0.1.0</span> is the first release. Wassup is in early development.</p>
   </div>
 
   <div class="banner" role="note">
@@ -62,7 +62,7 @@
 
   <section id="memory">
     <h2>Light on memory</h2>
-    <p class="lead">Clients that wrap WhatsApp Web carry a browser with them. Wassup doesn't.</p>
+    <p class="lead">Clients that wrap WhatsApp Web carry a browser with them. Wassup talks to WhatsApp directly.</p>
     <div class="chart">
       <h3>Memory in use, daemon and window together (PSS, MB)</h3>
       <div class="bars" role="list">
@@ -128,10 +128,12 @@
 </main>
 
 <footer>
-  <span>GPL-3.0-or-later © 2026 Mauricio Cerón ·
-    <a href="https://github.com/MawCeron/Wassup">source</a> ·
-    <a href="https://github.com/MawCeron/Wassup/blob/main/CHANGELOG.md">changelog</a> ·
-    <a href="https://github.com/MawCeron/Wassup/issues">issues</a></span>
+  <span class="legal">GPL-3.0-or-later © 2026 Mauricio Cerón</span>
+  <nav class="foot-links">
+    <a href="https://github.com/MawCeron/Wassup">Source</a>
+    <a href="https://github.com/MawCeron/Wassup/blob/main/CHANGELOG.md">Changelog</a>
+    <a href="https://github.com/MawCeron/Wassup/issues">Issues</a>
+  </nav>
   <span>Wassup is an unofficial client and is not affiliated with Meta or WhatsApp.</span>
 </footer>
 
@@ -147,7 +149,10 @@ fetch("https://api.github.com/repos/MawCeron/Wassup/releases/latest")
     dl.href = rpm.browser_download_url;
     dl.title = rpm.name + " · " + (rpm.size / 1048576).toFixed(1) + " MB";
     var fc = rpm.name.match(/\.fc(\d+)\./);
-    if (fc) dl.textContent = "Download for Fedora " + fc[1];
+    if (fc) {
+      document.getElementById("fc").textContent = fc[1];
+      dl.setAttribute("aria-label", "Download for Fedora " + fc[1]);
+    }
   })
   .catch(function () {});
 
